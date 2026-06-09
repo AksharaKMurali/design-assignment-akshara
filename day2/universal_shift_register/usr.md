@@ -20,6 +20,10 @@ Parallel load
 | 1  | 0  | Shift Left    |
 | 1  | 1  | Parallel Load |
 
+
+
+<img width="577" height="303" alt="image" src="https://github.com/user-attachments/assets/e4ce1965-7141-497f-b8ea-7017e1b04ad1" />
+
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5146e047-4085-431b-abb7-8a389a6882f8" />
 <img width="569" height="266" alt="image" src="https://github.com/user-attachments/assets/03bec840-65cf-4494-8c2a-70718a5b3fa0" />
 
