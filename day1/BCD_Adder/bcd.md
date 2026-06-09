@@ -7,7 +7,14 @@ Working Principle:
 A BCD adder works in two steps:
 Add two 4-bit binary numbers using a ripple carry adder
 If the sum > 9 (1001), add 0110 (6) to correct it into valid BCD code 
-CODE:
+
+
+<img width="287" height="371" alt="image" src="https://github.com/user-attachments/assets/44f114cd-c212-4fb4-a161-79e1854da674" />
+
+
+
+
+
 <img width="940" height="473" alt="image" src="https://github.com/user-attachments/assets/9631a8f2-6c7f-4d6c-8354-832ab8b2bce2" />
 <img width="656" height="272" alt="image" src="https://github.com/user-attachments/assets/076c661f-6853-4a12-b136-655f6f1ab3de" />
 
