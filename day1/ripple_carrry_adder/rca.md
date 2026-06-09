@@ -14,6 +14,7 @@ The carry “ripples” from LSB to MSB
 <img width="635" height="442" alt="image" src="https://github.com/user-attachments/assets/66910ea1-82cc-41ba-984c-4b8b9c3e058d" />
 
 TESTBENCH:
+
 <img width="523" height="449" alt="image" src="https://github.com/user-attachments/assets/b9c28873-9aba-47d7-93a9-d6527cd569d2" />
 <img width="1056" height="427" alt="image" src="https://github.com/user-attachments/assets/ce5d7dfc-d116-4a95-993b-e46a5ef23bd7" />
 
