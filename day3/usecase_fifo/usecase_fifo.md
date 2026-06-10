@@ -11,40 +11,40 @@ Design a pipelined system that:
 >Ensures no data loss
 
 
-*System Architecture: cin → face_mod → FIFO → mod_out → dout
+System Architecture: cin → face_mod → FIFO → mod_out → dout
 
 MODULES:
 
 
 1️.face_mod
 
-Simple input register
+>Simple input register
 
-Captures 8-bit input every clock
+>Captures 8-bit input every clock
 
-sout <= cin;
+>sout <= cin;
 
 
 
 2️.FIFO (8-bit, depth 8)
 
-Stores incoming data stream
+>Stores incoming data stream
 
-Handles buffering between fast input and slow output
+>Handles buffering between fast input and slow output
 
-Features:Write pointer,Read pointer
+>Features:Write pointer,Read pointer
 
-Count-based full/empty logic
+>Count-based full/empty logic
 
 
 
 3️.mod_out (3-cycle FSM)
 
-Controls read operation
+>Controls read operation
 
-Outputs data every 3rd clock cycle
+>Outputs data every 3rd clock cycle
 
-Behavior:
+>Behavior:
 
 Wait 3 cycles → read FIFO → output 
 
@@ -53,7 +53,7 @@ Repeats continuously
 
 4️.top module:
 
-Integrates all modules:
+>Integrates all modules:
 
 face_mod → fifo → mod_out
 
@@ -94,6 +94,8 @@ fifo:
 .
 <img width="292" height="551" alt="image" src="https://github.com/user-attachments/assets/42cc6758-a088-450c-9bc5-3b2d7737702c" />
 .
+<img width="288" height="325" alt="image" src="https://github.com/user-attachments/assets/76645d06-621c-4f8b-ae78-a48ca8670603" />
+
 
 mod_out:
 
