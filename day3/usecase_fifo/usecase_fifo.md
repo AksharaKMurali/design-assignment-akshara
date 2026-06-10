@@ -44,18 +44,14 @@ MODULES:
 
 >Outputs data every 3rd clock cycle
 
->Behavior:
+>Behavior:Wait 3 cycles → read FIFO → output 
 
-Wait 3 cycles → read FIFO → output 
-
-Repeats continuously
+>Repeats continuously
 
 
 4️.top module:
 
->Integrates all modules:
-
-face_mod → fifo → mod_out
+>Integrates all modules: face_mod → fifo → mod_out
 
 
 Timing Behavior:
