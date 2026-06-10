@@ -2,18 +2,19 @@ OBJECTIVE:
 
 Design a pipelined system that:
 
-Accepts 8-bit input (cin)
+>Accepts 8-bit input (cin)
 
-Buffers data using FIFO
+>Buffers data using FIFO
 
-Outputs data every 3rd clock cycle
+>Outputs data every 3rd clock cycle
 
-Ensures no data loss
+>Ensures no data loss
 
 
-System Architecture: cin → face_mod → FIFO → mod_out → dout
+*System Architecture: cin → face_mod → FIFO → mod_out → dout
 
-Modules
+MODULES:
+
 
 1️.face_mod
 
@@ -24,17 +25,14 @@ Captures 8-bit input every clock
 sout <= cin;
 
 
+
 2️.FIFO (8-bit, depth 8)
 
 Stores incoming data stream
 
 Handles buffering between fast input and slow output
 
-Features:
-
-Write pointer
-
-Read pointer
+Features:Write pointer,Read pointer
 
 Count-based full/empty logic
 
@@ -100,6 +98,20 @@ fifo:
 mod_out:
 
 <img width="327" height="584" alt="image" src="https://github.com/user-attachments/assets/bc183daf-cc21-445f-a6eb-c3db8961cc49" />
+
+top:
+<img width="303" height="525" alt="image" src="https://github.com/user-attachments/assets/fa30951b-c090-4364-83d6-11823fd09783" />
+.
+<img width="274" height="206" alt="image" src="https://github.com/user-attachments/assets/3d7c5ebe-c9fd-4522-8aba-8825f140b887" />
+
+testbench:
+
+<img width="362" height="601" alt="image" src="https://github.com/user-attachments/assets/9ffea5cb-eec0-4887-aaa9-b4d638510c08" />
+
+
+
+
+
 
 
 
