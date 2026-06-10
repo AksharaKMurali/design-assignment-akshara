@@ -63,11 +63,9 @@ Clock	Input	FIFO	Output
 | 2     | 11    | store | -      |
 | 3     | 22    | store | 00     |
 | 4     | 33    | store | -      |
-| 5     | 44    | store | -      |
-| 6     | -     | read  | 11     |
-| 7     | -     | read  | 22     |
-| 8     | -     | read  | 33     |
-| 9     | -     | read  | 44     |
+| 5     | -     | read  | 11     |
+| 6     | -     | read  | 22     |
+| 7     | -     | read  | 33     |
 
  
  Features:
