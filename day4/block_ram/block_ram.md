@@ -1,11 +1,8 @@
 
 # Block Memory Generator
 
-## Aim
 
-To design and implement a Block Memory Generator in Verilog HDL for performing read and write operations.
-
-## Description
+## Overview
 
 The Block Memory Generator is a memory module that supports synchronous read and write operations. Data is written into memory when the write enable signal is asserted and read from memory when the write enable signal is deasserted. The design uses separate write and read addresses and includes an asynchronous active-low reset.
 
