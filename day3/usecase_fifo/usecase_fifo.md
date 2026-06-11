@@ -120,8 +120,6 @@ simulation output:
 
 synthesis reprt:
 
-.
-
 Report BlackBoxes: 
 +-+--------------+----------+
 | |BlackBox name |Instances |
@@ -154,4 +152,15 @@ Report Instance Areas:
 |3     |  u2     |fifo_    |   129|
 |4     |  u3     |mod_out  |    13|
 +------+---------+---------+------+
+
+Number of LUTs Used = 41
+
+LUT1 = 2
+LUT2 = 2
+LUT3 = 3
+LUT4 = 10
+LUT5 = 6
+LUT6 = 18
+
+Total LUT Count = 41
 
