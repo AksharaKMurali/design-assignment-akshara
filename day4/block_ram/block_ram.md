@@ -2,11 +2,11 @@
 # Block Memory Generator
 
 
-## Overview
+>>Overview:
 
 The Block Memory Generator is a memory module that supports synchronous read and write operations. Data is written into memory when the write enable signal is asserted and read from memory when the write enable signal is deasserted. The design uses separate write and read addresses and includes an asynchronous active-low reset.
 
-## Inputs
+>>Inputs:
 
 * `clk` : Clock signal
 * `arstn` : Asynchronous active-low reset
@@ -15,18 +15,18 @@ The Block Memory Generator is a memory module that supports synchronous read and
 * `read_address[7:0]` : Read address
 * `data_in[7:0]` : Input data
 
-## Output
+>>Output
 
 * `data_out[7:0]` : Output data
 
-## Operation
+>>Operation
 
 * When `wr_enb = 1`, data present at `data_in` is written to the memory location specified by `wrt_address`.
 * When `wr_enb = 0`, data stored at `read_address` is transferred to `data_out`.
 * When `arstn = 0`, the memory and output are reset.
 * Read and write operations occur on the rising edge of the clock.
 
-## Simulation Result
+>>Simulation Result
 
 The simulation verified successful write and read operations. Data written to memory locations was correctly retrieved through the corresponding read addresses, confirming proper memory functionality.
 
