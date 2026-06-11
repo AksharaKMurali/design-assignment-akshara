@@ -1,7 +1,7 @@
 
 # Block Memory Generator
 
-## Aim
+# Aim
 
 To design and implement a Block Memory Generator in Verilog HDL for performing read and write operations.
 
