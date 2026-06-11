@@ -118,3 +118,40 @@ testbench:
 simulation output:
 <img width="1056" height="416" alt="image" src="https://github.com/user-attachments/assets/69d34f86-9aca-41bd-be8d-d7568b403a80" />
 
+synthesis reprt:
+
+.
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |BUFG  |     1|
+|2     |LUT1  |     2|
+|3     |LUT2  |     2|
+|4     |LUT3  |     3|
+|5     |LUT4  |    10|
+|6     |LUT5  |     6|
+|7     |LUT6  |    18|
+|8     |MUXF7 |     8|
+|9     |FDRE  |   101|
+|10    |IBUF  |    10|
+|11    |OBUF  |     9|
++------+------+------+
+
+Report Instance Areas: 
++------+---------+---------+------+
+|      |Instance |Module   |Cells |
++------+---------+---------+------+
+|1     |top      |         |   170|
+|2     |  u1     |face_mod |     8|
+|3     |  u2     |fifo_    |   129|
+|4     |  u3     |mod_out  |    13|
++------+---------+---------+------+
+
