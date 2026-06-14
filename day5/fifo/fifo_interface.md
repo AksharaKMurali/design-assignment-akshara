@@ -1,8 +1,6 @@
 # FIFO Interface Documentation
 
-## Aim
 
-To verify the functionality of a FIFO (First In First Out) memory using a SystemVerilog interface-based testbench.
 
 ## Description
 
@@ -104,7 +102,7 @@ always #5 aif.clk = ~aif.clk;
 This generates a clock with:
 
 * Time Period = 10 ns
-* Frequency = 100 MHz
+*
 
 ## Monitoring
 
@@ -123,7 +121,7 @@ The monitor continuously displays:
 * Full flag
 * Empty flag
 
-## Expected Output
+##  Output
 
 ### Write Sequence
 
@@ -150,8 +148,9 @@ EF
 63
 AB
 ```
+<img width="1037" height="447" alt="image" src="https://github.com/user-attachments/assets/d95dbdb8-103f-4258-bc09-c3f81f548bfb" />
 
-The output order matches the input order, confirming FIFO operation.
+
 
 ## Advantages of Using Interface
 
@@ -161,7 +160,5 @@ The output order matches the input order, confirming FIFO operation.
 4. Simplifies verification and debugging.
 5. Enhances code reusability.
 
-## Conclusion
-
-A SystemVerilog interface-based testbench was developed to verify FIFO functionality. Data was successfully written into and read from the FIFO while maintaining First-In First-Out behavior. The interface simplified signal management and improved testbench organization.
+.
 
