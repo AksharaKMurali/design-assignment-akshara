@@ -23,7 +23,7 @@ interface fifo_if;
 endinterface
 ```
 
->> Signals
+> Signals
 
 | Signal   | Direction | Description             |
 | -------- | --------- | ----------------------- |
@@ -93,7 +93,7 @@ aif.rd_enb = 1;
 
 The FIFO begins reading data in the same order in which it was written.
 
->> Clock Generation
+> Clock Generation
 
 ```systemverilog
 always #5 aif.clk = ~aif.clk;
@@ -104,7 +104,7 @@ This generates a clock with:
 * Time Period = 10 ns
 
 
-> Monitoring
+Monitoring
 
 ```systemverilog
 $monitor("din=%h dout=%h full=%b empty=%b",
@@ -149,13 +149,13 @@ AB
 
 
 
->> Advantages of Using Interface
+ Advantages of Using Interface
 
-1. Reduces the number of port connections.
-2. Improves readability of the testbench.
-3. Groups related signals into a single construct.
-4. Simplifies verification and debugging.
-5. Enhances code reusability.
+>1. Reduces the number of port connections.
+>2. Improves readability of the testbench.
+>3. Groups related signals into a single construct.
+>4. Simplifies verification and debugging.
+>5. Enhances code reusability.
 
 .
 
