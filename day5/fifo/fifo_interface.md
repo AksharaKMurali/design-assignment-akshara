@@ -2,13 +2,13 @@
 
 
 
-## Description
+>> Description
 
 A FIFO stores data in the order it is received. The first data written into the FIFO is the first data read out.
 
 A SystemVerilog interface is used to group all FIFO signals together, simplifying connections between the DUT and the testbench.
 
-## Interface Declaration
+>> Interface Declaration
 
 ```systemverilog
 interface fifo_if;
@@ -23,7 +23,7 @@ interface fifo_if;
 endinterface
 ```
 
-## Signals
+>> Signals
 
 | Signal   | Direction | Description             |
 | -------- | --------- | ----------------------- |
@@ -36,7 +36,7 @@ endinterface
 | full     | Output    | Indicates FIFO is full  |
 | empty    | Output    | Indicates FIFO is empty |
 
-## DUT Instantiation
+>> DUT Instantiation
 
 ```systemverilog
 fifo_if aif();
@@ -55,9 +55,9 @@ fifo dut(
 
 The interface instance `aif` acts as a connection layer between the testbench and the FIFO design.
 
-## Test Procedure
+>>Test Procedure
 
-### Reset Operation
+ Reset Operation:
 
 ```systemverilog
 aif.rst = 1;
@@ -67,7 +67,7 @@ aif.rst = 0;
 
 The FIFO is reset to initialize memory locations and pointers.
 
-### Write Operation
+Write Operation:
 
 ```systemverilog
 aif.wr_enb = 1;
@@ -84,8 +84,8 @@ aif.data_in = 8'hAB;
 
 Eight data values are written into the FIFO.
 
-### Read Operation
-
+ Read Operation:
+ 
 ```systemverilog
 aif.wr_enb = 0;
 aif.rd_enb = 1;
@@ -102,9 +102,9 @@ always #5 aif.clk = ~aif.clk;
 This generates a clock with:
 
 * Time Period = 10 ns
-*
 
-## Monitoring
+
+>> Monitoring
 
 ```systemverilog
 $monitor("din=%h dout=%h full=%b empty=%b",
@@ -114,12 +114,7 @@ $monitor("din=%h dout=%h full=%b empty=%b",
          aif.empty);
 ```
 
-The monitor continuously displays:
 
-* Input data
-* Output data
-* Full flag
-* Empty flag
 
 ##  Output
 
@@ -148,11 +143,13 @@ EF
 63
 AB
 ```
+
+
 <img width="1037" height="447" alt="image" src="https://github.com/user-attachments/assets/d95dbdb8-103f-4258-bc09-c3f81f548bfb" />
 
 
 
-## Advantages of Using Interface
+>> Advantages of Using Interface
 
 1. Reduces the number of port connections.
 2. Improves readability of the testbench.
