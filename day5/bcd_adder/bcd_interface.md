@@ -26,7 +26,7 @@ interface bcd_adder_if;
 endinterface
 ```
 
-## Signals
+ Signals:
 
 | Signal | Direction | Description      |
 | ------ | --------- | ---------------- |
