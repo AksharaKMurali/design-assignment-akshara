@@ -1,12 +1,18 @@
-##FIFO Interface
+# FIFO Interface Documentation
 
-Description
+## Aim
+
+To verify the functionality of a FIFO (First In First Out) memory using a SystemVerilog interface-based testbench.
+
+## Description
 
 A FIFO stores data in the order it is received. The first data written into the FIFO is the first data read out.
 
 A SystemVerilog interface is used to group all FIFO signals together, simplifying connections between the DUT and the testbench.
 
-Interface Declaration
+## Interface Declaration
+
+```systemverilog
 interface fifo_if;
     logic clk;
     logic rst;
@@ -17,17 +23,24 @@ interface fifo_if;
     logic empty;
     logic [7:0] data_out;
 endinterface
-Signals
-Signal	Direction	Description
-clk	Input	Clock signal
-rst	Input	Reset signal
-wr_enb	Input	Write enable
-rd_enb	Input	Read enable
-data_in	Input	Data to be written
-data_out	Output	Data read from FIFO
-full	Output	Indicates FIFO is full
-empty	Output	Indicates FIFO is empty
-DUT Instantiation
+```
+
+## Signals
+
+| Signal   | Direction | Description             |
+| -------- | --------- | ----------------------- |
+| clk      | Input     | Clock signal            |
+| rst      | Input     | Reset signal            |
+| wr_enb   | Input     | Write enable            |
+| rd_enb   | Input     | Read enable             |
+| data_in  | Input     | Data to be written      |
+| data_out | Output    | Data read from FIFO     |
+| full     | Output    | Indicates FIFO is full  |
+| empty    | Output    | Indicates FIFO is empty |
+
+## DUT Instantiation
+
+```systemverilog
 fifo_if aif();
 
 fifo dut(
@@ -40,18 +53,25 @@ fifo dut(
     aif.empty,
     aif.data_out
 );
+```
 
-The interface instance aif acts as a connection layer between the testbench and the FIFO design.
+The interface instance `aif` acts as a connection layer between the testbench and the FIFO design.
 
-Test Procedure
-Reset Operation
+## Test Procedure
+
+### Reset Operation
+
+```systemverilog
 aif.rst = 1;
 #10;
 aif.rst = 0;
+```
 
 The FIFO is reset to initialize memory locations and pointers.
 
-Write Operation
+### Write Operation
+
+```systemverilog
 aif.wr_enb = 1;
 
 aif.data_in = 8'h4F;
@@ -62,32 +82,86 @@ aif.data_in = 8'h78;
 aif.data_in = 8'h19;
 aif.data_in = 8'h63;
 aif.data_in = 8'hAB;
+```
 
 Eight data values are written into the FIFO.
 
-Read Operation
+### Read Operation
+
+```systemverilog
 aif.wr_enb = 0;
 aif.rd_enb = 1;
+```
 
 The FIFO begins reading data in the same order in which it was written.
 
-Clock Generation
+## Clock Generation
+
+```systemverilog
 always #5 aif.clk = ~aif.clk;
+```
 
 This generates a clock with:
 
-Time Period = 10 ns
-Frequency = 100 MHz
-Monitoring
+* Time Period = 10 ns
+* Frequency = 100 MHz
+
+## Monitoring
+
+```systemverilog
 $monitor("din=%h dout=%h full=%b empty=%b",
          aif.data_in,
          aif.data_out,
          aif.full,
          aif.empty);
+```
 
 The monitor continuously displays:
 
-Input data
-Output data
-Full flag
-Empty flag
+* Input data
+* Output data
+* Full flag
+* Empty flag
+
+## Expected Output
+
+### Write Sequence
+
+```text
+4F
+12
+EF
+48
+78
+19
+63
+AB
+```
+
+### Read Sequence
+
+```text
+4F
+12
+EF
+48
+78
+19
+63
+AB
+```
+
+The output order matches the input order, confirming FIFO operation.
+
+## Advantages of Using Interface
+
+1. Reduces the number of port connections.
+2. Improves readability of the testbench.
+3. Groups related signals into a single construct.
+4. Simplifies verification and debugging.
+5. Enhances code reusability.
+
+## Conclusion
+
+A SystemVerilog interface-based testbench was developed to verify FIFO functionality. Data was successfully written into and read from the FIFO while maintaining First-In First-Out behavior. The interface simplified signal management and improved testbench organization.
+
