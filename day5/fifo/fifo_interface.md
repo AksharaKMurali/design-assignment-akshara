@@ -1,4 +1,4 @@
-# FIFO Interface Documentation
+# FIFO Interface
 
 
 
