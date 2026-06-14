@@ -1,7 +1,7 @@
-# BCD Adder 
+ BCD Adder :
 
 
- Description:
+> Description
  
 
 A BCD Adder performs the addition of two BCD digits along with an optional carry input. If the binary sum exceeds 9, a correction value of 6 (0110) is added to produce a valid BCD output.
@@ -60,7 +60,7 @@ The interface instance `aif` acts as a communication layer between the testbench
 
 
 
-### Test Case 1
+ Test Case 1
 
 ```systemverilog
 aif.a   = 4'd4;
@@ -76,7 +76,7 @@ BCD Output = 1000
 Carry = 0
 ```
 
-### Test Case 2
+ Test Case 2
 
 ```systemverilog
 aif.a   = 4'd3;
@@ -94,7 +94,7 @@ Carry = 1
 
 
 
-# Expected Output
+# Output
 
 <img width="1048" height="460" alt="image" src="https://github.com/user-attachments/assets/bd52863e-0587-4e53-85c7-5c09e0bf9075" />
 
