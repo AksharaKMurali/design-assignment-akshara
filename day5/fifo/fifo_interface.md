@@ -2,13 +2,13 @@
 
 
 
->> Description
+> Description
 
 A FIFO stores data in the order it is received. The first data written into the FIFO is the first data read out.
 
 A SystemVerilog interface is used to group all FIFO signals together, simplifying connections between the DUT and the testbench.
 
->> Interface Declaration
+> Interface Declaration
 
 ```systemverilog
 interface fifo_if;
@@ -36,7 +36,7 @@ endinterface
 | full     | Output    | Indicates FIFO is full  |
 | empty    | Output    | Indicates FIFO is empty |
 
->> DUT Instantiation
+> DUT Instantiation
 
 ```systemverilog
 fifo_if aif();
@@ -55,7 +55,7 @@ fifo dut(
 
 The interface instance `aif` acts as a connection layer between the testbench and the FIFO design.
 
->>Test Procedure
+>Test Procedure
 
  Reset Operation:
 
@@ -93,7 +93,7 @@ aif.rd_enb = 1;
 
 The FIFO begins reading data in the same order in which it was written.
 
-## Clock Generation
+>> Clock Generation
 
 ```systemverilog
 always #5 aif.clk = ~aif.clk;
@@ -104,7 +104,7 @@ This generates a clock with:
 * Time Period = 10 ns
 
 
->> Monitoring
+> Monitoring
 
 ```systemverilog
 $monitor("din=%h dout=%h full=%b empty=%b",
@@ -116,7 +116,7 @@ $monitor("din=%h dout=%h full=%b empty=%b",
 
 
 
-##  Output
+>  Output
 
 ### Write Sequence
 
