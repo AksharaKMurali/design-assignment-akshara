@@ -20,7 +20,7 @@ A transaction class is used to store the input and output data associated with a
 | full     | Indicates FIFO is full  |
 | empty    | Indicates FIFO is empty |
 
-## Constraint
+> Constraint
 
 ```systemverilog
 constraint c1 {
