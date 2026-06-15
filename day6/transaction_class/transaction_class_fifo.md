@@ -31,6 +31,40 @@ A transaction class is used to store all input and output signals associated wit
 * Read enable is generated less frequently.
 * Input data is randomized with higher probability for `FF` and lower probability for `AA` and `55`.
 
+  > Distribution Constraint (dist)
+
+The `dist` keyword is used for weighted randomization. Values with higher weights are generated more frequently than values with lower weights.
+
+
+```systemverilog
+rst_tb dist {0:=8,1:=2};
+```
+
+* `rst_tb = 0` → 80%
+* `rst_tb = 1` → 20%
+
+```systemverilog
+wrenb_tb dist {0:=2,1:=8};
+```
+
+* `wrenb_tb = 1` → 80%
+* `wrenb_tb = 0` → 20%
+
+```systemverilog
+data_in_tb dist {
+    8'hFF := 10,
+    8'hAA := 5,
+    8'h55 := 5
+};
+```
+
+* `FF` → 50%
+* `AA` → 25%
+* `55` → 25%
+
+Using `dist` helps generate specific values more often during randomization.
+
+
 
 
 
