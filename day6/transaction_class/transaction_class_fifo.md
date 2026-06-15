@@ -1,35 +1,15 @@
 FIFO Transaction :
 
->> Description
+> Description
 
 A transaction class is used to store the input and output data associated with a FIFO operation. It acts as a data container that is exchanged between verification components such as the generator, driver, monitor, and scoreboard.
 
- >>Transaction Class
+ >Transaction Class
 
-```systemverilog
-class transaction;
+<img width="645" height="285" alt="image" src="https://github.com/user-attachments/assets/9b958003-ff86-44c3-941f-d4252ed9d42c" />
 
-    rand bit        wr_enb;
-    rand bit        rd_enb;
-    rand bit [7:0]  data_in;
 
-    bit [7:0]       data_out;
-    bit             full;
-    bit             empty;
 
-    constraint c1 {
-        !(wr_enb && rd_enb);
-    }
-
-    function void display(string s);
-        $display("[%s] wr_enb=%0b rd_enb=%0b data_in=%0h data_out=%0h full=%0b empty=%0b",
-                 s, wr_enb, rd_enb, data_in, data_out, full, empty);
-    endfunction
-
-endclass
-```
-
-## Variables Used
 
 | Variable | Description             |
 | -------- | ----------------------- |
@@ -50,22 +30,8 @@ constraint c1 {
 
 This constraint prevents simultaneous read and write operations during randomization.
 
-## Display Function
 
-```systemverilog
-function void display(string s);
-```
 
-The display function is used to print transaction details during simulation for debugging and verification purposes.
 
-## Advantages
 
-* Encapsulates FIFO signals into a single object.
-* Supports constrained random verification.
-* Improves code readability and reusability.
-* Simplifies debugging using the display function.
-
-## Conclusion
-
-The FIFO transaction class provides an object-oriented representation of FIFO operations. It stores input and output data, supports random stimulus generation, and helps in efficient verification of FIFO functionality.
 
