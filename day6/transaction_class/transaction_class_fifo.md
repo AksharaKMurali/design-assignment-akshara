@@ -8,7 +8,8 @@ A transaction class is used to store all input and output signals associated wit
 
 >Transaction Class
 
-<img width="602" height="445" alt="image" src="https://github.com/user-attachments/assets/5fd11290-9d5a-48ce-8944-f92e1772d4e9" />
+<img width="549" height="408" alt="image" src="https://github.com/user-attachments/assets/ad660012-f3cf-4264-805c-1955faea518f" />
+
 
 
 
