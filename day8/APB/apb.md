@@ -8,7 +8,7 @@ The APB slave implements a **32-word memory**, supports both **read and write tr
 
 ---
 
-# Project Structure
+> Project Structure
 
 ```text
 APB_Verification/
@@ -57,7 +57,7 @@ The Design Under Test (DUT) is an APB Slave with an internal **32 × 32-bit memo
 
 ---
 
-# APB Slave Operation
+>APB Slave Operation
 
 The APB Slave uses a finite state machine with three states.
 
@@ -96,7 +96,7 @@ State Transition:
 
 ---
 
-# Verification Architecture
+> Verification Architecture
 
 ```text
                 Generator
@@ -124,9 +124,9 @@ State Transition:
 
 ---
 
-# Verification Components
+> Verification Components
 
-## 1. Interface (`apb_if.sv`)
+1. Interface (`apb_if.sv`)
 
 The interface groups all APB signals into a single communication channel shared by the DUT and verification components.
 
@@ -147,7 +147,7 @@ The interface is connected to the Driver and Monitor through a **virtual interfa
 
 ---
 
-## 2. Transaction (`apb_transaction.sv`)
+2. Transaction (`apb_transaction.sv`)
 
 The transaction class represents a single APB transaction.
 
@@ -162,7 +162,7 @@ The transaction class represents a single APB transaction.
 * `prdata`
 * `pslverr`
 
-### Constraint
+ Constraint
 
 The address is generated using weighted randomization:
 
@@ -173,16 +173,16 @@ This ensures that both normal and error scenarios are verified.
 
 ---
 
-## 3. Generator (`generator.sv`)
+ 3. Generator (`generator.sv`)
 
 The generator creates transactions and sends them to the driver through the `gen2drv` mailbox.
 
-### Directed Transactions
+Directed Transactions:
 
 1. Write `32'hAAAA_BBBB` to address `4`
 2. Read from address `4`
 
-### Random Transactions
+ Random Transactions:
 
 After the directed tests, the generator creates **20 constrained-random transactions**.
 
@@ -194,7 +194,7 @@ gen2drv.put(tr);
 
 ---
 
-## 4. Driver (`driver.sv`)
+ 4. Driver (`driver.sv`)
 
 The driver receives transactions from the generator and converts them into APB bus activity.
 
@@ -211,7 +211,7 @@ The driver performs the following sequence:
 
 ---
 
-## 5. Monitor (`monitor.sv`)
+ 5. Monitor (`monitor.sv`)
 
 The monitor passively observes the APB interface.
 
@@ -233,7 +233,7 @@ and forwards the transaction to the scoreboard using the `mon2scb` mailbox.
 
 ---
 
-## 6. Scoreboard (`scoreboard.sv`)
+ 6. Scoreboard (`scoreboard.sv`)
 
 The scoreboard acts as the reference model.
 
@@ -270,7 +270,7 @@ This counter is used by the environment to determine when all transactions have 
 
 ---
 
-## 7. Environment (`environment.sv`)
+ 7. Environment (`environment.sv`)
 
 The environment creates and connects all verification components.
 
@@ -301,7 +301,7 @@ The environment waits until the scoreboard verifies all transactions before allo
 
 ---
 
-## 8. Testbench (`tb.sv`)
+ 8. Testbench (`tb.sv`)
 
 The top-level testbench performs the following operations:
 
