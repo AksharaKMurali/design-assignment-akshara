@@ -31,11 +31,11 @@ APB_Verification/
 
 ---
 
-# Design Description
+>Design Description
 
 The Design Under Test (DUT) is an APB Slave with an internal **32 × 32-bit memory**.
 
-## Input Signals
+ Input Signals
 
 | Signal    | Width | Description        |
 | --------- | ----: | ------------------ |
@@ -47,7 +47,7 @@ The Design Under Test (DUT) is an APB Slave with an internal **32 × 32-bit memo
 | `pwrite`  |     1 | Read/Write Control |
 | `pwdata`  |    32 | Write Data         |
 
-## Output Signals
+ Output Signals
 
 | Signal    | Width | Description       |
 | --------- | ----: | ----------------- |
