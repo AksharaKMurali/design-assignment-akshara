@@ -769,8 +769,8 @@ The stored packets are gradually transmitted from the FIFO to the output interfa
 
 ---
 
-<img width="1337" height="565" alt="image" src="https://github.com/user-attachments/assets/4678da85-d551-44af-a999-7ac2c81ef94b" />
-<img width="1339" height="538" alt="image" src="https://github.com/user-attachments/assets/29c7aff9-88c5-4fb0-a4e8-d15ce234bf17" />
+<img width="1080" height="925" alt="image" src="https://github.com/user-attachments/assets/2f83c434-251c-4094-b190-9dd3ce2440ee" />
+
 
 
 
