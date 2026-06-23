@@ -794,6 +794,17 @@ The directed testbench prints status messages corresponding to each verification
 
 These messages correspond directly to the waveform timeline and indicate the successful execution of each verification phase.
 
+## Impact and Efficiency
+Reduces congestion during high-bandwidth data transmission.
+
+Prevents FIFO overflow by dynamically controlling the input data rate.
+
+Improves bandwidth utilization through adaptive flow control.
+
+Maintains stable throughput even under burst traffic conditions.
+
+Reduces unnecessary packet loss caused by receiver overload.
+
 ---
 
 The behavioral simulation demonstrates that the Secure Bandwidth Throttler operates as intended under the evaluated scenarios. The design responds to sustained traffic by reducing throughput through controlled pacing, protects the FIFO during downstream stalls using the watermark mechanism, and returns to normal operation after traffic conditions recover.
