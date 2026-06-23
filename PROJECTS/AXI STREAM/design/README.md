@@ -64,6 +64,31 @@ Data flows sequentially through the following modules:
 
 ---
 
+## Top-Level Global Pin Layout & Signal Dictionary
+
+The unified interface layout matches the verified top-level hardware structure, ensuring that every signal is bound to the system's singular master clock domain.
+
+| **Signal Handle** | **Direction** | **Bit Width** | **Functional Mapping & Behavior** |
+|-------------------|---------------|---------------|-----------------------------------|
+| `clk` | Input | 1 bit | Master System Clock: Synchronously drives all flip-flops, internal dual-port memory arrays, and control structures. |
+| `rst` | Input | 1 bit | Synchronous Global Reset: Flushes internal pointer indices, clears memory to suppress simulation "X" states, and resets FSMs to their default state. |
+| `s_axis_tdata` | Input | 32 bits | Incoming Data Payload: Wide input data stream received from the upstream AXI-Stream source. |
+| `s_axis_tkeep` | Input | 4 bits | Input Byte Qualifiers: Indicates which byte lanes within the 32-bit word contain valid data. |
+| `s_axis_tvalid` | Input | 1 bit | Source Stream Validity: Asserted by the source whenever valid data is available. |
+| `s_axis_tready` | Output | 1 bit | Upstream Backpressure Signal: Asserted when the internal buffer can accept new data; deasserted to stall the upstream source. |
+| `s_axis_tlast` | Input | 1 bit | Source End-of-Frame Marker: Indicates the final transfer of a packet. |
+| `m_axis_tdata` | Output | 32 bits | Regulated Master Data Payload: Dynamically throttled output data stream sent to the downstream receiver. |
+| `m_axis_tkeep` | Output | 4 bits | Master Byte Qualifiers: Valid byte-lane indicators forwarded with the output data. |
+| `m_axis_tvalid` | Output | 1 bit | Master Stream Validity: Asserted whenever throttled output data is available. |
+| `m_axis_tready` | Input | 1 bit | Downstream Consumer Readiness: Indicates that the receiver is ready to accept data. |
+| `m_axis_tlast` | Output | 1 bit | Master End-of-Frame Marker: Packet boundary indicator propagated to the downstream interface. |
+| `cfg_high_threshold_bytes` | Input | 32 bits | Upper Threshold Register: Configures the maximum allowable data volume before throttling begins. |
+| `cfg_low_threshold_bytes` | Input | 32 bits | Lower Threshold Register: Defines the recovery threshold at which throttling is released. |
+| `cfg_rate_limit_mode` | Input | 1 bit | Operating Mode Select: `0` = Dynamic throttling enabled, `1` = Direct bypass mode. |
+| `dynamic_num` | Input | 8 bits | Fractional Shaper Numerator: Configures the active duty-cycle numerator used for rate shaping. |
+| `dynamic_denom` | Input | 8 bits | Fractional Shaper Denominator: Configures the duty-cycle denominator determining the shaping resolution. |
+| `fifo_watermark_80` | Output | 1 bit | FIFO Occupancy Warning: Asserted when internal FIFO occupancy reaches approximately 80% capacity (≥410 words). |
+
 ## 3. Throttling Mechanics
 
 The architecture is defensive because it applies backpressure to both sides of the design simultaneously:
