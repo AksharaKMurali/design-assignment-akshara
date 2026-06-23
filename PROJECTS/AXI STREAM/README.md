@@ -582,7 +582,7 @@ Occupancy >= 410
 Watermark activates.
 
 ```text
-fifo_watermark_80 = 1
+fifo_watermark_80 = 1(fifo_prog_full=1)
 ```
 
 FSM immediately transitions into throttling mode.
