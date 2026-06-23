@@ -56,7 +56,6 @@ Data flows sequentially through the following modules:
 
 ### E. Central Controller (`rate_control_fsm`)
 * **Purpose:** The centralized command center linking monitoring metrics to active pacing gates.
-* **State Machine Layout:** 
 
 * **State Logic & Conditions:**
   1. **`STATE_IDLE` (`3'b001`):** Default unthrottled mode. Sets full pacing capacity (`rate_num = 100`, `rate_denom = 100`). If `status_byte_count > cfg_high_threshold_bytes` OR `fifo_watermark_80 == 1'b1`, it transitions instantly to `STATE_THROTTLE`.
@@ -65,9 +64,9 @@ Data flows sequentially through the following modules:
 
 ---
 
-## 3. Dual-Layer Throttling Mechanics
+## 3. Throttling Mechanics
 
-The architecture is highly defensive because it applies backpressure to both sides of the design simultaneously:
+The architecture is defensive because it applies backpressure to both sides of the design simultaneously:
 
 1. **Downstream (Output Side) Throttling:** The FSM commands the rate limiter to pulse its ready lines, shielding downstream processing units from line-rate data floods.
 2. **Upstream (Input Side) Throttling:** As wait-states accumulate, data backs up inside the FIFO. If the flood continues, the FIFO runs out of space and drops its input ready line (`s_axis_tready`). This backpressure signal travels up to the input source, forcing the external sender to hold until the system catches up.
