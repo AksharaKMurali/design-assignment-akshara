@@ -622,9 +622,7 @@ Traffic Reduces
  │
  ▼
 STATE_RECOVERY
- │
- ▼
-Cooldown Timer
+
  │
  ▼
 Stable Traffic
