@@ -109,7 +109,7 @@ FIFO Occupancy
  Occupancy ≥ 410
       │
       ▼
-fifo_watermark_80
+fif_prog_full
       │
       ▼
 rate_control_fsm
@@ -191,7 +191,7 @@ FIFO Occupancy
 410 Words Reached
        │
        ▼
-fifo_watermark_80 = 1
+fifo_prog_full= 1
        │
        ▼
 FSM Override
@@ -412,7 +412,7 @@ Inputs:
 status_byte_count
 cfg_high_threshold_bytes
 cfg_low_threshold_bytes
-fifo_watermark_80
+fifo_prog_full
 ```
 
 Outputs:
@@ -479,7 +479,7 @@ FSM continuously monitors:
 
 ```text
 status_byte_count
-fifo_watermark_80
+fifo_prog_full
 ```
 
 ---
@@ -582,7 +582,7 @@ Occupancy >= 410
 Watermark activates.
 
 ```text
-fifo_watermark_80 = 1(fifo_prog_full=1)
+fifo_prog_full=1
 ```
 
 FSM immediately transitions into throttling mode.
@@ -656,10 +656,9 @@ The Secure Bandwidth Throttler exposes a unified AXI-Stream interface together w
 | `m_axis_tlast` | Output | 1 bit | Packet boundary indicator propagated to the downstream interface. |
 | `cfg_high_threshold_bytes` | Input | 32 bits | Upper traffic threshold used by the FSM to initiate throttling. |
 | `cfg_low_threshold_bytes` | Input | 32 bits | Lower traffic threshold used by the FSM to begin recovery. |
-| `cfg_rate_limit_mode` | Input | 1 bit | Operating mode selection (`0` = Dynamic throttling, `1` = Direct bypass). |
 | `dynamic_num` | Input | 8 bits | Numerator used by the rate limiter to determine the active portion of the duty cycle. |
 | `dynamic_denom` | Input | 8 bits | Denominator used by the rate limiter to determine the pacing window length. |
-| `fifo_watermark_80` | Output | 1 bit | Status flag asserted when FIFO occupancy reaches approximately 80% capacity (≥410 words). |
+| `fifo_prog_full` | Output | 1 bit | Status flag asserted when FIFO occupancy reaches approximately 80% capacity (≥410 words). |
 
 ---
 
