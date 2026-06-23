@@ -713,7 +713,6 @@ The verification process validates the following functional requirements:
 
 
 
-```
 
 The testbench performs the following functions:
 
