@@ -1,10 +1,6 @@
 # Secure Bandwidth Throttler IP
 
-## Microarchitecture Design Specification
 
----
-
-# Revision Information
 
 | Field              | Value                        |
 | ------------------ | ---------------------------- |
