@@ -36,7 +36,7 @@ Data flows sequentially through the following modules:
 * **Structure:** A 512-word deep internal RAM grid with a 37-bit payload width ($32\text{-bit } TDATA + 4\text{-bit } TKEEP + 1\text{-bit } TLAST$).
 * **Internal Block Logic:**
   * **Occupancy Math:** Tracks pointer locations via a write pointer (`wr_ptr_reg`) and a read pointer (`rd_ptr_reg`). The live data volume inside the memory is calculated every clock cycle:
-    $$\text{fifo\_occupancy} = \text{wr\_ptr\_reg} - \text{rd\_ptr\_reg}$$
+   fifo_occupancy = wr_ptr_reg - rd_ptr_reg
   * **80% High-Watermark Line:** A hardware comparator continuously checks the live occupancy value. The moment the internal depth hits $\ge 410$ words, the dedicated `fifo_watermark_80` signal wire flips high to notify the control state machine.
   * **Dual-Registered Skid Output:** Implements a primary output register bank (`m_axis_tdata_reg`, etc.) and a temporary backup register bank (`temp_m_axis_tdata_reg`, etc.) in parallel. When the rate limiter lowers readiness, any pop operation in progress slides safely sideways into the temporary registers. When the path opens back up, multiplexer logic prioritizes draining the temporary registers first, completely eliminating out-of-order data corruption.
   * **Simulation Initialization Loop:** On the assertion of a reset (`rst`), an internal loop automatically writes zeros across all 512 memory indices to neutralize uninitialized simulation states ("Red X").
