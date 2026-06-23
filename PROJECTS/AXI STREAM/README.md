@@ -38,6 +38,8 @@ The architecture was developed with the following objectives:
 
 # 3. System Architecture Overview
 
+<img width="1400" height="720" alt="image" src="https://github.com/user-attachments/assets/d89d4cd9-3d41-43e8-8ba3-14e53c9bec42" />
+
 The design consists of two major subsystems:
 
 1. Forward Data Path
@@ -119,9 +121,6 @@ STATE_THROTTLE
 ---
 
 # 4. Data Path Architecture
-
-<img width="1400" height="720" alt="image" src="https://github.com/user-attachments/assets/d89d4cd9-3d41-43e8-8ba3-14e53c9bec42" />
-
 
 
 Data travels through four major processing stages.
