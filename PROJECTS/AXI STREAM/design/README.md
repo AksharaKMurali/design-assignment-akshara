@@ -1,6 +1,6 @@
-# Hardware Design Specification: Closed-Loop Network Traffic Shaper
+#BANDWIDTH THROTTLER
 
-This document provides the microarchitectural design specification for the Adaptive Bandwidth Throttler IP. The architecture utilizes a closed-loop system layout running within a single master clock domain to protect downstream components from high-speed data floods.
+This document provides the microarchitectural design specification for the Secure Bandwidth Throttler IP. The architecture utilizes a closed-loop system layout running within a single master clock domain to protect downstream components from high-speed data floods.
 
 ---
 
