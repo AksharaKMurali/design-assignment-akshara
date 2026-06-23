@@ -1,1 +1,1 @@
-**Enter the details of your work and file structure of each days here**
+This repository contains the assignments completed as part of Summer internship program 2026 in TKM college of engineering. The assignments cover the design, of various digital circuits using Verilog and System Verilog
