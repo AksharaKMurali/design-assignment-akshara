@@ -465,72 +465,61 @@ Timer Expired    │            │Traffic Spike
 ```
 
 ---
+### State Logic & Conditions
 
-## STATE_IDLE
+#### **STATE_IDLE (3'b001) – Normal Operation**
 
-Configuration:
+**Bandwidth Setting**
 
-```text
-rate_num   = 100
-rate_denom = 100
-```
+- `rate_limit_num = 1`
+- `rate_limit_denom = 1`
 
-FSM continuously monitors:
+This corresponds to a **1/1 pacing ratio**, allowing data to pass through without intentional throttling.
 
-```text
-status_byte_count
-fifo_prog_full
-```
+**Transition Condition**
 
----
+The FSM remains in `STATE_IDLE` while traffic remains below the configured threshold. It transitions to `STATE_THROTTLE` when either:
 
-## STATE_THROTTLE
-
-Configuration:
-
-```text
-rate_num   = 25
-rate_denom = 100
-```
-
-Bandwidth is restricted.
-
-FIFO begins absorbing excess traffic.
-
-Backpressure may propagate upstream if congestion persists.
+- `stat_byte_count > cfg_high_threshold_bytes`, or
+- `fifo_prog_full` (FIFO 80% watermark) becomes asserted.
 
 ---
 
-## STATE_RECOVERY
+#### **STATE_THROTTLE (3'b010) – Traffic Regulation**
 
-Configuration:
+**Bandwidth Setting**
 
-```text
-rate_num   = 50
-rate_denom = 100
-```
+- `rate_limit_num = 1`
+- `rate_limit_denom = 4`
 
-A 5000-cycle countdown timer begins.
+This corresponds to a **1/4 pacing ratio**, allowing one transfer opportunity for every four credit periods. The rate limiter introduces wait states by temporarily deasserting the ready signal, reducing the outgoing bandwidth while allowing excess traffic to accumulate safely in the FIFO.
 
-If another traffic surge occurs:
+**Transition Condition**
 
-```text
-RECOVERY
-   │
-   ▼
-THROTTLE
-```
+The FSM remains in `STATE_THROTTLE` until:
 
-If stability is maintained for the entire timer duration:
+- `stat_byte_count < cfg_low_threshold_bytes`, and
+- `fifo_prog_full` is deasserted.
 
-```text
-RECOVERY
-   │
-   ▼
-IDLE
-```
+When both conditions are satisfied, the FSM transitions to `STATE_RECOVERY`.
 
 ---
+
+#### **STATE_RECOVERY (3'b100) – Controlled Recovery**
+
+**Bandwidth Setting**
+
+- `rate_limit_num = 1`
+- `rate_limit_denom = 2`
+
+This corresponds to a **1/2 pacing ratio**, providing a gradual return toward full bandwidth rather than immediately removing all throttling.
+
+A cooldown timer is started when the FSM enters this state.
+
+**Transition Condition**
+
+- If another traffic burst is detected (`stat_byte_count > cfg_high_threshold_bytes`) or the FIFO programmable-full signal is asserted, the FSM immediately returns to `STATE_THROTTLE`.
+- If the cooldown timer expires without any new congestion, the FSM returns to `STATE_IDLE`.
 
 # 9. Throttling Mechanism
 
