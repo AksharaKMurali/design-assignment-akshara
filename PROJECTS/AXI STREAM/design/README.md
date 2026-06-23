@@ -12,7 +12,7 @@ The design consists of a sequential data processing pipeline combined with a par
 
 ### Data Pipeline Flow
 Data flows sequentially through the following modules:
-$$\text{Input (s\_axis)} \rightarrow \text{Register Slice} \rightarrow \text{FIFO Buffer} \rightarrow \text{Rate Limiter} \rightarrow \text{Status Counter} \rightarrow \text{Output (m\_axis)}$$
+
 
 <img width="1400" height="720" alt="image" src="https://github.com/user-attachments/assets/260b02e7-0e1b-4df5-9d37-9fc712a4124e" />
 
